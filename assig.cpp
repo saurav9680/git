@@ -20,7 +20,6 @@ int main()
        cout<<"Error in creating file!!!";
        return 0;
    }
-  
    cout<<"Report File Created";
 	for (const auto& entry : fs::directory_iterator(path)) {
 
