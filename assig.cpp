@@ -9,8 +9,7 @@ namespace fs = filesystem;
 int main()
 {
     char cmd[100];
-	string path
-		= "C:\\Users\\ksaurav\\Desktop\\Files";
+	string path= "C:\\Users\\ksaurav\\Desktop\\Files";
 	struct stat sb;
     fstream file;
    file.open("C:\\Users\\ksaurav\\Desktop\\Files\\Report.txt",ios::out);
