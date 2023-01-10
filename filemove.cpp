@@ -10,9 +10,9 @@ void createRep(string path){
         file.open(path+"\\Report.txt",ios::out);
         if(!file)
         {
-             cout<<"Error in creating file!!!";
+             cout<<"Error in creating file!!!"<<endl;
         }
-        cout<<"Report File Created";
+        cout<<"Report File Created"<<endl;
 }
 void createFolder(string dest){
     fs::create_directories(dest);
@@ -44,11 +44,15 @@ int main()
 		const char* path = outfilename_str.c_str();
         if (stat(path, &sb) == 0 && !(sb.st_mode & S_IFDIR)){
             filesystem::path p(path);
-           
             if(find(Documents.begin(),Documents.end(),p.extension())!=Documents.end()){
                 file<<p.filename()<<" "<<p.extension()<<" "<<"Document"<<endl;
                 dest=file_path+"\\Document";
-                moveFilefunc(dest,path);    
+                if(p.stem()=="Report"){
+                    continue;
+                }else{
+                    moveFilefunc(dest,path); 
+                }
+                   
             }
             else if(find(Music.begin(),Music.end(),p.extension())!=Music.end()){
                 file<<p.filename()<<" "<<p.extension()<<" "<<"Music"<<endl;
@@ -61,8 +65,7 @@ int main()
                 moveFilefunc(dest,path);
             }
             else{
-                continue;
-                cout<<"Wrong File Format";
+                cout<<"This File Extension should not be moved."<<endl;
             }
         }
 	}
